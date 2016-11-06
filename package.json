@@ -12,8 +12,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "handlebars": "^4.0.5",
-    "normalize-scss": "^6.0.0"
+    "handlebars": "^4.0.5"
   },
   "devDependencies": {
     "babel": "^6.5.2",

@@ -1,2 +1,2 @@
 # starter
-a wip web starter with some shit i was playing with
+wip starter with some browserify & gulp stuff
