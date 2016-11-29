@@ -1,2 +1,2 @@
 # starter
-wip starter with some browserify & gulp stuff
+boilerplate with browserify & gulp stuff
