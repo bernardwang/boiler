@@ -25,15 +25,20 @@ const watchifyOpts = _.extend(
 	browserifyOpts, watchify.args
 );
 const eslintOpts = {
-	//extends : 'eslint:recommended',
-	//extends : 'airbnb',
-	parser : 'babel-eslint',
-	rules : {
-		'indent': [2, 'tab'],
+	//"extends": "eslint:recommended",
+	//"extends": "airbnb",
+	"env": {
+		"es6": true,
+		"browser": true
+	},
+	"parser": "babel-eslint",
+	"rules": {
+		"no-tabs": "off",
+		"indent": ["error", "tab"]
 	}
 }
 const sassOpts = {
-	includePaths: ["./node_modules/typey/stylesheets"] // include typey
+	//includePaths: ["./node_modules/typey/stylesheets"] // include typey
 }
 const autoprefixerOpts = {
 	browsers: ['last 2 versions'],
@@ -49,7 +54,7 @@ const imageminOpts = {
 	optimizationLevel : 3
 };
 const syncOpts = {
-  stream: true,
+	stream: true,
 };
 const deployOpts = {
 	//branch: 'master', // user page website
@@ -189,13 +194,17 @@ gulp.task('dev', ['styles','scripts-watch'], () => {
  *	Dist build
  */
 gulp.task('dist', ['lint-scripts','min-styles','min-scripts'], () => {
-	
+	sync({
+		server: {
+		baseDir: './dist/'
+		}
+	});
 });
 
 /**
  *	Deploy to github pages
  */
-gulp.task('deploy', ['dist'], () => {
+gulp.task('deploy', ['lint-scripts','min-styles','min-scripts'], () => {
 	return gulp.src('./dist/**/*')
 		.pipe(deploy(deployOpts));
 });
