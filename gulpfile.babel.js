@@ -29,12 +29,21 @@ const eslintOpts = {
 	//"extends": "airbnb",
 	"env": {
 		"es6": true,
-		"browser": true
+		"browser": true,
 	},
-	"parser": "babel-eslint",
+	"globals": [
+		"window",
+		"document",
+		"$",
+	],
 	"rules": {
+		"max-len": ["warn", { "code": 100 }],
+		"no-unused-vars": ["warn", { "vars": "all", "args": "after-used" }],
+		"prefer-template": "off",
+		"camelcase": "off",
 		"no-tabs": "off",
-		"indent": ["error", "tab"]
+		"no-plusplus": "off",
+		"indent": ["error", "tab"],
 	}
 }
 const sassOpts = {
