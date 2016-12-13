@@ -230,7 +230,7 @@ gulp.task('dev', ['pages', 'styles','watch-scripts', 'assets', 'watcher', 'brows
 /**
  *	dist - prod build
  */
-gulp.task('dist', ['pages', 'min-styles', 'lint-scripts', 'min-scripts', 'assets']);
+gulp.task('prod', ['pages', 'min-styles', 'lint-scripts', 'min-scripts', 'assets']);
 
 /**
  *	clean - deletes dist folder
@@ -251,7 +251,7 @@ gulp.task('min-imgs', () => {
 /**
  *	deploy - prod build once, minified images, then deploys to gh-pages
  */
-gulp.task('deploy', ['dist'], () => {
+gulp.task('deploy', ['prod'], () => {
 	return gulp.src('./dist/**/*')
 		.pipe(deploy(deployOpts));
 });
